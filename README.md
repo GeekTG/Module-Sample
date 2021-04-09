@@ -1,2 +1,2 @@
-# Module-Sample
+# FTG ModuleSample
 Skeleton of FTG module
