@@ -18,8 +18,6 @@ import logging
 
 # If you want to use logging, leave it at that
 logger = logging.getLogger(__name__)
-
-
 # Usage:
 #  logger.debug("Text")
 #  logger.warning("Text")
@@ -33,7 +31,7 @@ logger = logging.getLogger(__name__)
 class YourMod(loader.Module):
     """Example module"""  # Description for module | Translateable due to @loader.tds
 
-    # Strings used in the module
+    # Strings used in the messages | Translateable due to @loader.tds
     strings = {"name": "Module's name",
                "cfg_doc": "This is what is said, you can edit me with the configurator",
                "after_sleep": "We have finished sleeping!"}
@@ -54,9 +52,9 @@ class YourMod(loader.Module):
         #  `Any` - The value that will be returned if the key is not found
         # self.db.set("Key", "Value")
 
-    # To add a module command, create an asynchronous function that must end in cmd
-    # .example == `examplecmd`
-    @loader.unrestricted  # Security setting to change who can use the command (defaults to owner | sudo)
+    # To add a module command, create an asynchronous function that must end in cmd and contains in args `self, message`
+    # .example == `async def examplecmd(self, message)`
+    @loader.owner  # Security setting to change who can use the command (defaults to owner | sudo)
     async def examplecmd(self, message: types.Message):
         """Does something when you type .example (hence, named examplecmd)"""  # Description for command
 
